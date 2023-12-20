@@ -6,25 +6,25 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HastaneRandevu.Migrations
 {
     /// <inheritdoc />
-    public partial class DoktorTablosuEkle : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Doktorlar",
+                name: "doktorlar",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Ad = table.Column<string>(type: "text", nullable: false),
-                    Soyad = table.Column<string>(type: "text", nullable: false),
-                    Uzmanlik = table.Column<string>(type: "text", nullable: false),
-                    Vardiya = table.Column<string>(type: "text", nullable: false)
+                    ad = table.Column<string>(type: "text", nullable: false),
+                    soyad = table.Column<string>(type: "text", nullable: false),
+                    uzmanlik = table.Column<string>(type: "text", nullable: false),
+                    vardiya = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Doktorlar", x => x.Id);
+                    table.PrimaryKey("PK_doktorlar", x => x.Id);
                 });
         }
 
@@ -32,7 +32,7 @@ namespace HastaneRandevu.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Doktorlar");
+                name: "doktorlar");
         }
     }
 }

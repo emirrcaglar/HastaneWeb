@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HastaneRandevu.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    [Migration("20231219190858_DoktorTablosuEkle")]
-    partial class DoktorTablosuEkle
+    [Migration("20231220072701_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,25 +32,25 @@ namespace HastaneRandevu.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Ad")
+                    b.Property<string>("ad")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Soyad")
+                    b.Property<string>("soyad")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Uzmanlik")
+                    b.Property<string>("uzmanlik")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Vardiya")
+                    b.Property<string>("vardiya")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doktorlar");
+                    b.ToTable("doktorlar");
                 });
 #pragma warning restore 612, 618
         }

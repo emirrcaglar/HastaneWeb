@@ -1,0 +1,32 @@
+﻿@model List<Doktor>
+
+
+<h1>Doktorlar</h1>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Doktor Adi
+        </th>
+        
+    </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var doktor in Model)
+        {
+            
+        
+        <tr>
+            <td> @doktor.Id </td>
+            <td> @doktor.ad </td>
+            <td> @doktor.soyad </td>
+            <td>@doktor.uzmanlik</td>
+        </tr>
+        }
+    </tbody>
+        
+</table>
