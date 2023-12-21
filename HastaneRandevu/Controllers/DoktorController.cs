@@ -16,5 +16,17 @@ namespace HastaneRandevu.Controllers
             List<Doktor> objDoktorList = _uygulamaDbContext.doktorlar.ToList();
             return View(objDoktorList);
         }
+
+        public IActionResult DoktorEkle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult DoktorEkle(Doktor dt)
+        {
+            _uygulamaDbContext.doktorlar.Add(dt);
+            _uygulamaDbContext.SaveChanges();
+            return View();
+        }
     }
 }
