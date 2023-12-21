@@ -4,7 +4,7 @@ namespace HastaneRandevu.Models
 {
     public class Doktor
     {
-        [Key] //primary key
+        [Key] //primary
         public int Id { get; set; }
         [Required] //not null
         public string ad { get; set; }
