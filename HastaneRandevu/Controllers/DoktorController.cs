@@ -24,9 +24,52 @@ namespace HastaneRandevu.Controllers
         [HttpPost]
         public IActionResult DoktorEkle(Doktor dt)
         {
-            _uygulamaDbContext.doktorlar.Add(dt);
-            _uygulamaDbContext.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _uygulamaDbContext.doktorlar.Add(dt);
+                _uygulamaDbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View();
+        }
+
+        public IActionResult Guncelle(int? id)
+        {
+            if(id== null || id==0)
+            {
+                return NotFound();
+            }
+            Doktor? doktorVt = _uygulamaDbContext.doktorlar.Find(id);
+            if(doktorVt == null)
+            {
+                return NotFound();
+            }
+            return View(doktorVt);
+        }
+        [HttpPost]
+        public IActionResult Guncelle(Doktor dt)
+        {
+            if (ModelState.IsValid)
+            {
+                _uygulamaDbContext.doktorlar.Update(dt);
+                _uygulamaDbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public IActionResult Sil(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Doktor? doktorVt = _uygulamaDbContext.doktorlar.Find(id);
+            if (doktorVt == null)
+            {
+                return NotFound();
+            }
+            return View(doktorVt);
         }
     }
 }

@@ -1,15 +1,32 @@
 ﻿@model List<Doktor>
 
+<div class="row pt-3 pb-2">
+<h1 style="font-family:'Calibri'" >Doktorlar</h1>
+</div>
 
-<h1>Doktorlar</h1>
+<div class="row pt-3 pb-2">
 <table class="table table-bordered">
     <thead>
     <tr>
-        <th>
-            Id
-        </th>
+        
         <th>
             Doktor Adi
+        </th>
+        <th>
+            Doktor Soyadi
+        </th>
+        <th>
+            Uzmanlik Alani
+        </th>
+        <th>
+            Vardiya
+        </th>
+
+        <th>
+
+        </th>
+        <th>
+
         </th>
         
     </tr>
@@ -21,15 +38,23 @@
             
         
         <tr>
-            <td> @doktor.Id </td>
+            
             <td> @doktor.ad </td>
             <td> @doktor.soyad </td>
             <td>@doktor.uzmanlik</td>
+            <td>@doktor.vardiya</td>
+            <td>
+                <a asp-controller="Doktor" asp-action="Guncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-outline-success" style="width:125px">Guncelle</a>
+            </td>
+            <td>
+                    <a asp-controller="Doktor" asp-action="Sil" type="button" class="btn btn-outline-danger" style="width:125px">Sil</a>
+            </td>
         </tr>
         }
     </tbody>
         
 </table>
+</div>
 
 <div class="row pt-3 pb-2">
     <div>
