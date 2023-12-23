@@ -6,14 +6,14 @@ namespace HastaneRandevu.Controllers
 {
     public class DoktorController : Controller
     {
-        private readonly UygulamaDbContext _uygulamaDbContext;
-        public DoktorController(UygulamaDbContext context)
+        private readonly IDoktorRepository _doktorRepository;
+        public DoktorController(IDoktorRepository context)
         {
-            _uygulamaDbContext = context;
+            _doktorRepository = context;
         }
         public IActionResult Index()
         {
-            List<Doktor> objDoktorList = _uygulamaDbContext.doktorlar.ToList();
+            List<Doktor> objDoktorList = _doktorRepository.GetAll().ToList();
             return View(objDoktorList);
         }
 
@@ -26,8 +26,9 @@ namespace HastaneRandevu.Controllers
         {
             if (ModelState.IsValid)
             {
-                _uygulamaDbContext.doktorlar.Add(dt);
-                _uygulamaDbContext.SaveChanges();
+                _doktorRepository.Ekle(dt);
+                _doktorRepository.Kaydet();
+                TempData["basarili"] = "Yeni Doktor Basariyla Eklendi";
                 return RedirectToAction("Index");
             }
             return View();
@@ -39,7 +40,7 @@ namespace HastaneRandevu.Controllers
             {
                 return NotFound();
             }
-            Doktor? doktorVt = _uygulamaDbContext.doktorlar.Find(id);
+            Doktor? doktorVt = _doktorRepository.Get(u=>u.Id==id);
             if(doktorVt == null)
             {
                 return NotFound();
@@ -51,8 +52,9 @@ namespace HastaneRandevu.Controllers
         {
             if (ModelState.IsValid)
             {
-                _uygulamaDbContext.doktorlar.Update(dt);
-                _uygulamaDbContext.SaveChanges();
+                _doktorRepository.Guncelle(dt);
+                _doktorRepository.Kaydet();
+                TempData["basarili"] = "Doktor Basariyla Guncellendi";
                 return RedirectToAction("Index");
             }
             return View();
@@ -64,7 +66,7 @@ namespace HastaneRandevu.Controllers
             {
                 return NotFound();
             }
-            Doktor? doktorVt = _uygulamaDbContext.doktorlar.Find(id);
+            Doktor? doktorVt = _doktorRepository.Get(u => u.Id == id);
             if (doktorVt == null)
             {
                 return NotFound();
@@ -74,13 +76,14 @@ namespace HastaneRandevu.Controllers
         [HttpPost, ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {
-            Doktor? dt = _uygulamaDbContext.doktorlar.Find(id);
+            Doktor? dt = _doktorRepository.Get(u => u.Id == id);
             if(dt == null)
             {
                 return NotFound();
             }
-            _uygulamaDbContext.doktorlar.Remove(dt);
-            _uygulamaDbContext.SaveChanges();
+            _doktorRepository.Sil(dt);
+            _doktorRepository.Kaydet();
+            TempData["basarili"] = "Doktor Basariyla Silindi";
             return RedirectToAction("Index");
         }
     }

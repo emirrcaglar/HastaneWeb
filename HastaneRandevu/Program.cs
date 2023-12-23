@@ -1,3 +1,4 @@
+using HastaneRandevu.Models;
 using HastaneRandevu.Utility;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<UygulamaDbContext>(options=>options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// _doktorRepository obj icin Dependency Injection
+builder.Services.AddScoped<IDoktorRepository, DoktorRepository>();
 
 var app = builder.Build();
 
