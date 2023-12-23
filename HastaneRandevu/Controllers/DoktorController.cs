@@ -71,5 +71,17 @@ namespace HastaneRandevu.Controllers
             }
             return View(doktorVt);
         }
+        [HttpPost, ActionName("Sil")]
+        public IActionResult SilPOST(int? id)
+        {
+            Doktor? dt = _uygulamaDbContext.doktorlar.Find(id);
+            if(dt == null)
+            {
+                return NotFound();
+            }
+            _uygulamaDbContext.doktorlar.Remove(dt);
+            _uygulamaDbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

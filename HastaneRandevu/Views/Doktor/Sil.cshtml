@@ -4,36 +4,36 @@
 
     <div class="border p-3 mt-5">
         <div class="row pb-3">
-            <h2 class="text-primary">Doktor Guncelle</h2>
+            <h2 class="text-primary">Doktor Sil</h2>
             </hr>
         </div>
 
         <div class="mb-3">
             <label asp-for="ad" class="p-0">Doktorun Adi: </label>
-            <input asp-for="ad" class="form-control" />
+            <input asp-for="ad" disabled class="form-control" />
             <span asp-validation-for="ad" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="soyad" class="p-0">Doktorun Soyadi: </label>
-            <input asp-for="soyad" class="form-control" />
+            <input asp-for="soyad" disabled class="form-control" />
             <span asp-validation-for="soyad" class="text-danger"></span>
 
         </div>
         <div class="mb-3">
             <label asp-for="uzmanlik" class="p-0">Doktorun Uzmanligi: </label>
-            <input asp-for="uzmanlik" class="form-control" />
+            <input asp-for="uzmanlik" disabled class="form-control" />
             <span asp-validation-for="uzmanlik" class="text-danger"></span>
 
         </div>
         <div class="mb-3">
             <label asp-for="vardiya" class="p-0">Doktorun Vardiyasi: </label>
-            <input asp-for="vardiya" class="form-control" />
+            <input asp-for="vardiya" disabled class="form-control" />
             <span asp-validation-for="vardiya" class="text-danger"></span>
 
         </div>
 
 
-        <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Doktor Guncelle</button>
+        <button type="submit" class="btn btn-lg btn-secondary" style="width:200px">Doktor Sil</button>
 
         <a asp-controller="Doktor" asp-action="Index" class="btn btn-lg btn-info" style="width:200px">Geri Don</a>
     </div>
