@@ -16,6 +16,10 @@ namespace HastaneRandevu.Models
         [MaxLength(30)]
         public string soyad { get; set; }
 
+        public int BolumId { get; set; }
+        [ForeignKey("BolumId")]
+        public Bolum? Bolum { get; set;}
+
     
     }
 }

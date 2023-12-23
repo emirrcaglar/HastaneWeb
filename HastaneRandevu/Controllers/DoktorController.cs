@@ -1,4 +1,5 @@
-﻿using HastaneRandevu.Models;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using HastaneRandevu.Models;
 using HastaneRandevu.Utility;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,18 +8,29 @@ namespace HastaneRandevu.Controllers
     public class DoktorController : Controller
     {
         private readonly IDoktorRepository _doktorRepository;
-        public DoktorController(IDoktorRepository context)
+        private readonly IBolumRepository _bolumRepository;
+        public DoktorController(IDoktorRepository doktorRepository, IBolumRepository bolumRepository)
         {
-            _doktorRepository = context;
+            _doktorRepository = doktorRepository;
+            _bolumRepository = bolumRepository;
         }
         public IActionResult Index()
         {
             List<Doktor> objDoktorList = _doktorRepository.GetAll().ToList();
+            
             return View(objDoktorList);
         }
 
         public IActionResult Ekle()
         {
+            IEnumerable<SelectListItem> BolumList = _bolumRepository.GetAll().Select(k => new SelectListItem
+            {
+                Text = k.bolumAdi,
+                Value = k.Id.ToString()
+            });
+
+            ViewBag.Bolum = BolumList;
+
             return View();
         }
         [HttpPost]
@@ -31,6 +43,7 @@ namespace HastaneRandevu.Controllers
                 TempData["basarili"] = "Yeni Doktor Basariyla Eklendi";
                 return RedirectToAction("Index");
             }
+
             return View();
         }
 

@@ -17,6 +17,11 @@
             <label asp-for="soyad" class="p-0">Doktorun Soyadi: </label>
             <input asp-for="soyad" class="form-control" />
             <span asp-validation-for="soyad" class="text-danger"></span>
+         <div class="mb-3">
+            <label asp-for="BolumId" class="p-0">Bolum</label>
+            <select asp-for="BolumId" asp-items="ViewBag.Bolum" class="form-select" ></select>
+            <span asp-validation-for="BolumId" class="text-danger"></span>
+        </div>
 
         </div>
         

@@ -7,7 +7,6 @@
             <h2 class="text-primary">Doktor Ekle</h2>
             </hr>
         </div>
-
         <div class="mb-3">
             <label asp-for="ad" class="p-0">Doktorun Adi: </label>
             <input asp-for="ad" class="form-control" />
@@ -17,7 +16,12 @@
             <label asp-for="soyad" class="p-0">Doktorun Soyadi: </label>
             <input asp-for="soyad" class="form-control" />
             <span asp-validation-for="soyad" class="text-danger"></span>
-
+        </div>
+        <div class="mb-3">
+            <label asp-for="BolumId" class="p-0">Bolum</label>
+            <select asp-for="BolumId" asp-items="ViewBag.Bolum" class="form-select" ></select>
+            <span asp-validation-for="BolumId" class="text-danger"></span>
+        </div>
 
         <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Doktor Ekle</button>
 
