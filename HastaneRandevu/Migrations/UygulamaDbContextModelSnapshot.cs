@@ -21,6 +21,23 @@ namespace HastaneRandevu.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("HastaneRandevu.Models.Bolum", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("ad")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Bolumler");
+                });
+
             modelBuilder.Entity("HastaneRandevu.Models.Doktor", b =>
                 {
                     b.Property<int>("Id")
@@ -31,11 +48,13 @@ namespace HastaneRandevu.Migrations
 
                     b.Property<string>("ad")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("character varying(25)");
 
                     b.Property<string>("soyad")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
 
                     b.Property<string>("uzmanlik")
                         .IsRequired()
@@ -47,7 +66,7 @@ namespace HastaneRandevu.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("doktorlar");
+                    b.ToTable("Doktorlar");
                 });
 #pragma warning restore 612, 618
         }

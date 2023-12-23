@@ -10,6 +10,8 @@ builder.Services.AddDbContext<UygulamaDbContext>(options=>options.UseNpgsql(buil
 
 // _doktorRepository obj icin Dependency Injection
 builder.Services.AddScoped<IDoktorRepository, DoktorRepository>();
+builder.Services.AddScoped<IBolumRepository, BolumRepository>();
+
 
 var app = builder.Build();
 

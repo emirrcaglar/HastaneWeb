@@ -4,17 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneRandevu.Controllers
 {
-    public class DoktorController : Controller
+    public class BolumController : Controller
     {
-        private readonly IDoktorRepository _doktorRepository;
-        public DoktorController(IDoktorRepository context)
+        private readonly IBolumRepository _bolumRepository;
+        public BolumController(IBolumRepository context)
         {
-            _doktorRepository = context;
+            _bolumRepository = context;
         }
         public IActionResult Index()
         {
-            List<Doktor> objDoktorList = _doktorRepository.GetAll().ToList();
-            return View(objDoktorList);
+            List<Bolum> objBolumList = _bolumRepository.GetAll().ToList();
+            return View(objBolumList);
         }
 
         public IActionResult Ekle()
@@ -22,13 +22,13 @@ namespace HastaneRandevu.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Ekle(Doktor dt)
+        public IActionResult Ekle(Bolum bl)
         {
             if (ModelState.IsValid)
             {
-                _doktorRepository.Ekle(dt);
-                _doktorRepository.Kaydet();
-                TempData["basarili"] = "Yeni Doktor Basariyla Eklendi";
+                _bolumRepository.Ekle(bl);
+                _bolumRepository.Kaydet();
+                TempData["basarili"] = "Yeni Bolum Basariyla Eklendi";
                 return RedirectToAction("Index");
             }
             return View();
@@ -40,21 +40,21 @@ namespace HastaneRandevu.Controllers
             {
                 return NotFound();
             }
-            Doktor? doktorVt = _doktorRepository.Get(u=>u.Id==id);
-            if(doktorVt == null)
+            Bolum? bolumVt = _bolumRepository.Get(u=>u.Id==id);
+            if(bolumVt == null)
             {
                 return NotFound();
             }
-            return View(doktorVt);
+            return View(bolumVt);
         }
         [HttpPost]
-        public IActionResult Guncelle(Doktor dt)
+        public IActionResult Guncelle(Bolum bl)
         {
             if (ModelState.IsValid)
             {
-                _doktorRepository.Guncelle(dt);
-                _doktorRepository.Kaydet();
-                TempData["basarili"] = "Doktor Basariyla Guncellendi";
+                _bolumRepository.Guncelle(bl);
+                _bolumRepository.Kaydet();
+                TempData["basarili"] = "Bolum Basariyla Guncellendi";
                 return RedirectToAction("Index");
             }
             return View();
@@ -66,24 +66,24 @@ namespace HastaneRandevu.Controllers
             {
                 return NotFound();
             }
-            Doktor? doktorVt = _doktorRepository.Get(u => u.Id == id);
-            if (doktorVt == null)
+            Bolum? bolumVt = _bolumRepository.Get(u => u.Id == id);
+            if (bolumVt == null)
             {
                 return NotFound();
             }
-            return View(doktorVt);
+            return View(bolumVt);
         }
         [HttpPost, ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {
-            Doktor? dt = _doktorRepository.Get(u => u.Id == id);
-            if(dt == null)
+            Bolum? bl = _bolumRepository.Get(u => u.Id == id);
+            if(bl == null)
             {
                 return NotFound();
             }
-            _doktorRepository.Sil(dt);
-            _doktorRepository.Kaydet();
-            TempData["basarili"] = "Doktor Basariyla Silindi";
+            _bolumRepository.Sil(bl);
+            _bolumRepository.Kaydet();
+            TempData["basarili"] = "Bolum Basariyla Silindi";
             return RedirectToAction("Index");
         }
     }

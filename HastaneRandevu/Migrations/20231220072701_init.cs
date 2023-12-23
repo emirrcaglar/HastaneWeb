@@ -12,7 +12,7 @@ namespace HastaneRandevu.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "doktorlar",
+                name: "Doktorlar",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -24,7 +24,7 @@ namespace HastaneRandevu.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_doktorlar", x => x.Id);
+                    table.PrimaryKey("PK_Doktorlar", x => x.Id);
                 });
         }
 
@@ -32,7 +32,7 @@ namespace HastaneRandevu.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "doktorlar");
+                name: "Doktorlar");
         }
     }
 }

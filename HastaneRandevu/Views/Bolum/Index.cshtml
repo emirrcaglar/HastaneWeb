@@ -1,0 +1,62 @@
+﻿@model List<Bolum>
+
+@if (TempData["basarili"] != null){
+    <div class="row pt-3 pb-2">
+    <h2 style="font-family:'Calibri'" >@TempData["basarili"]</h2>
+    </div>
+}
+else{
+    <div class="row pt-3 pb-2">
+    <h2 style="font-family:'Calibri'" >Bolumler</h2>
+    </div>
+}
+
+
+<div class="row pt-3 pb-2">
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>
+            Bolum Adi
+        </th>    
+
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        
+    </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var bolum in Model)
+        {
+            
+        
+        <tr>
+            
+            <td> @bolum.bolumAdi </td>
+            
+            <td>
+                <a asp-controller="Bolum" asp-action="Guncelle" asp-route-id="@bolum.Id" type="button" class="btn btn-outline-success" style="width:125px">Guncelle</a>
+            </td>
+            <td>
+                <a asp-controller="Bolum" asp-action="Sil" asp-route-id="@bolum.Id" type="button" class="btn btn-outline-danger" style="width:125px">Sil</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+        
+</table>
+</div>
+
+<div class="row pt-3 pb-2">
+    <div>
+        <a asp-controller="Bolum" asp-action="Ekle" class="btn btn-lg btn-primary" type="button">
+            Bolum Ekle
+        </a>
+    </div>
+</div>

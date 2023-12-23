@@ -1,0 +1,21 @@
+﻿@model Bolum
+
+<form method="post">
+
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Bolum Ekle</h2>
+            </hr>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="bolumAdi" class="p-0">Bolumun Adi: </label>
+            <input asp-for="bolumAdi" class="form-control" />
+            <span asp-validation-for="bolumAdi" class="text-danger"></span>
+        </div>        
+        <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Bolum Ekle</button>
+
+        <a asp-controller="Bolum" asp-action="Index" class="btn btn-lg btn-info" style="width:200px">Geri Don</a>
+    </div>
+
+</form>
