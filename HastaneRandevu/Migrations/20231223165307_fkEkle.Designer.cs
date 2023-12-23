@@ -2,6 +2,7 @@
 using HastaneRandevu.Utility;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HastaneRandevu.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    partial class UygulamaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231223165307_fkEkle")]
+    partial class fkEkle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,6 +49,9 @@ namespace HastaneRandevu.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("BolumId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ad")
                         .IsRequired()
                         .HasMaxLength(25)
@@ -56,9 +62,30 @@ namespace HastaneRandevu.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
+                    b.Property<string>("uzmanlik")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("vardiya")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("BolumId");
+
                     b.ToTable("Doktorlar");
+                });
+
+            modelBuilder.Entity("HastaneRandevu.Models.Doktor", b =>
+                {
+                    b.HasOne("HastaneRandevu.Models.Bolum", "Bolum")
+                        .WithMany()
+                        .HasForeignKey("BolumId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bolum");
                 });
 #pragma warning restore 612, 618
         }

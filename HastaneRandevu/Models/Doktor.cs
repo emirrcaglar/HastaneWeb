@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HastaneRandevu.Models
 {
@@ -15,11 +16,6 @@ namespace HastaneRandevu.Models
         [MaxLength(30)]
         public string soyad { get; set; }
 
-        [Required(ErrorMessage = "Lutfen gecerli bir UZMANLIK ALANI giriniz.")]
-        public string uzmanlik { get; set; }
-
-        [Required(ErrorMessage = "Lutfen gecerli bir VARDIYA giriniz.")]
-        [Range(1, 3)]
-        public string vardiya { get; set; }
+    
     }
 }

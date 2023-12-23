@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HastaneRandevu.Models
 {
@@ -8,8 +9,6 @@ namespace HastaneRandevu.Models
 
         [Required(ErrorMessage = "Lutfen gecerli bir BOLUM giriniz.")]
         public string bolumAdi { get; set; }
-
-
 
 
 

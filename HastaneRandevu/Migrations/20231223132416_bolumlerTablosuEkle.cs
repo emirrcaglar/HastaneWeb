@@ -41,6 +41,7 @@ namespace HastaneRandevu.Migrations
                 {
                     table.PrimaryKey("PK_Bolumler", x => x.id);
                 });
+
         }
 
         /// <inheritdoc />

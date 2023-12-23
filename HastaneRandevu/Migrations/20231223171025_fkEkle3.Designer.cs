@@ -2,6 +2,7 @@
 using HastaneRandevu.Utility;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HastaneRandevu.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    partial class UygulamaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231223171025_fkEkle3")]
+    partial class fkEkle3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,11 +32,16 @@ namespace HastaneRandevu.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("DoktorId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("bolumAdi")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DoktorId");
 
                     b.ToTable("Bolumler");
                 });
@@ -56,9 +64,28 @@ namespace HastaneRandevu.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
+                    b.Property<string>("uzmanlik")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("vardiya")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.ToTable("Doktorlar");
+                });
+
+            modelBuilder.Entity("HastaneRandevu.Models.Bolum", b =>
+                {
+                    b.HasOne("HastaneRandevu.Models.Doktor", "Doktor")
+                        .WithMany()
+                        .HasForeignKey("DoktorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doktor");
                 });
 #pragma warning restore 612, 618
         }
