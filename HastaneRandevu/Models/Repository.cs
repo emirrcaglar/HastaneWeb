@@ -12,21 +12,38 @@ namespace HastaneRandevu.Models
         {
             _uygulamaDbContext = uygulamaDbContext;
             this.dbSet = _uygulamaDbContext.Set<T>();
+            _uygulamaDbContext.Doktorlar.Include(d => d.Bolum).Include(d => d.BolumId);
         }
         public void Ekle(T entity)
         {
             dbSet.Add(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProps = null)
         {
             IQueryable<T> sorgu = dbSet.Where(filter);
+            if (!string.IsNullOrEmpty(includeProps))
+            {
+                foreach (var includeProp in includeProps.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    sorgu = sorgu.Include(includeProp);
+                }
+
+            }
             return sorgu.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeProps = null)
         {
             IQueryable<T> sorgu = dbSet;
+            if (!string.IsNullOrEmpty(includeProps))
+            {
+                foreach(var includeProp in includeProps.Split(new char[] { ','}, StringSplitOptions.RemoveEmptyEntries)) 
+                {
+                    sorgu = sorgu.Include(includeProp);
+                }
+               
+            }
             return sorgu.ToList();
         }
 

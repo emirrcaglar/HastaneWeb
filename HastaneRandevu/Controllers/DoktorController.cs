@@ -16,12 +16,12 @@ namespace HastaneRandevu.Controllers
         }
         public IActionResult Index()
         {
-            List<Doktor> objDoktorList = _doktorRepository.GetAll().ToList();
-            
+            // List<Doktor> objDoktorList = _doktorRepository.GetAll().ToList();
+            List<Doktor> objDoktorList = _doktorRepository.GetAll(includeProps:"Bolum").ToList();
             return View(objDoktorList);
         }
 
-        public IActionResult Ekle()
+        public IActionResult EkleGuncelle(int? id)
         {
             IEnumerable<SelectListItem> BolumList = _bolumRepository.GetAll().Select(k => new SelectListItem
             {
@@ -31,22 +31,48 @@ namespace HastaneRandevu.Controllers
 
             ViewBag.Bolum = BolumList;
 
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Ekle(Doktor dt)
-        {
-            if (ModelState.IsValid)
+            if(id == null || id == 0)
             {
-                _doktorRepository.Ekle(dt);
-                _doktorRepository.Kaydet();
-                TempData["basarili"] = "Yeni Doktor Basariyla Eklendi";
-                return RedirectToAction("Index");
+                // Ekle
+                return View();
+            }
+            else
+            {
+                // Guncelle
+                Doktor? doktorVt = _doktorRepository.Get(u => u.Id == id);
+                if (doktorVt == null)
+                {
+                    return NotFound();
+                }
+                return View(doktorVt);
             }
 
             return View();
         }
+        [HttpPost]
+        public IActionResult EkleGuncelle(Doktor dt)
+        {
+            if (ModelState.IsValid)
+            {
+                if(dt.Id == 0)
+                {
+                    _doktorRepository.Ekle(dt);
+                    TempData["basarili"] = "Yeni Doktor Basariyla Eklendi";
 
+                }
+                else
+                {
+                    _doktorRepository.Guncelle(dt);
+                    TempData["basarili"] = "Doktor Basariyla Guncellendi";
+
+
+                }
+                _doktorRepository.Kaydet();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        /*
         public IActionResult Guncelle(int? id)
         {
             if(id== null || id==0)
@@ -60,6 +86,7 @@ namespace HastaneRandevu.Controllers
             }
             return View(doktorVt);
         }
+        
         [HttpPost]
         public IActionResult Guncelle(Doktor dt)
         {
@@ -72,6 +99,7 @@ namespace HastaneRandevu.Controllers
             }
             return View();
         }
+        */
 
         public IActionResult Sil(int? id)
         {
