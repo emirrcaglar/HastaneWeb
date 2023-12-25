@@ -9,10 +9,13 @@ namespace HastaneRandevu.Controllers
     {
         private readonly IDoktorRepository _doktorRepository;
         private readonly IBolumRepository _bolumRepository;
-        public DoktorController(IDoktorRepository doktorRepository, IBolumRepository bolumRepository)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public DoktorController(IDoktorRepository doktorRepository, IBolumRepository bolumRepository, IWebHostEnvironment webHostEnvironment)
         {
             _doktorRepository = doktorRepository;
             _bolumRepository = bolumRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -46,8 +49,6 @@ namespace HastaneRandevu.Controllers
                 }
                 return View(doktorVt);
             }
-
-            return View();
         }
         [HttpPost]
         public IActionResult EkleGuncelle(Doktor dt)
@@ -72,34 +73,6 @@ namespace HastaneRandevu.Controllers
             }
             return View();
         }
-        /*
-        public IActionResult Guncelle(int? id)
-        {
-            if(id== null || id==0)
-            {
-                return NotFound();
-            }
-            Doktor? doktorVt = _doktorRepository.Get(u=>u.Id==id);
-            if(doktorVt == null)
-            {
-                return NotFound();
-            }
-            return View(doktorVt);
-        }
-        
-        [HttpPost]
-        public IActionResult Guncelle(Doktor dt)
-        {
-            if (ModelState.IsValid)
-            {
-                _doktorRepository.Guncelle(dt);
-                _doktorRepository.Kaydet();
-                TempData["basarili"] = "Doktor Basariyla Guncellendi";
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
-        */
 
         public IActionResult Sil(int? id)
         {

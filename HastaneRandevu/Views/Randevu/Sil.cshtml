@@ -1,0 +1,19 @@
+﻿@model Randevu
+
+<form method="post">
+
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Randevu Iptal</h2>
+            <hr>
+        </div>
+        <div class="mb-3">
+            <label asp-for="HastaId" class="p-0">Doktorun Adi: </label>
+            <input asp-for="HastaId" class="form-control" />
+        </div>      
+        <button type="submit" class="btn btn-lg btn-secondary" style="width:200px">Randevu Iptal</button>
+
+        <a asp-controller="Randevu" asp-action="Index" class="btn btn-lg btn-info" style="width:200px">Geri Don</a>
+    </div>
+
+</form>

@@ -66,6 +66,27 @@ namespace HastaneRandevu.Migrations
                     b.ToTable("Doktorlar");
                 });
 
+            modelBuilder.Entity("HastaneRandevu.Models.Randevu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DoktorId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("HastaId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoktorId");
+
+                    b.ToTable("Randevular");
+                });
+
             modelBuilder.Entity("HastaneRandevu.Models.Doktor", b =>
                 {
                     b.HasOne("HastaneRandevu.Models.Bolum", "Bolum")
@@ -75,6 +96,17 @@ namespace HastaneRandevu.Migrations
                         .IsRequired();
 
                     b.Navigation("Bolum");
+                });
+
+            modelBuilder.Entity("HastaneRandevu.Models.Randevu", b =>
+                {
+                    b.HasOne("HastaneRandevu.Models.Doktor", "Doktor")
+                        .WithMany()
+                        .HasForeignKey("DoktorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doktor");
                 });
 #pragma warning restore 612, 618
         }

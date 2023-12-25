@@ -1,0 +1,59 @@
+﻿@model List<Randevu>
+
+@if (TempData["basarili"] != null){
+    <div class="row pt-3 pb-2">
+    <h2 style="font-family:'Calibri'" >@TempData["basarili"]</h2>
+    </div>
+}
+else{
+    <div class="row pt-3 pb-2">
+    <h2 style="font-family:'Calibri'" >Randevular</h2>
+    </div>
+}
+
+
+<div class="row pt-3 pb-2">
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            HastaId
+        </th>
+        <th>
+            Doktor Adi
+        </th>    
+        
+    </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var randevu in Model)
+        { 
+        <tr>
+            <td>@randevu.Id</td>
+            <td>@randevu.HastaId</td>
+            <td>@randevu.Doktor.ad</td>            
+
+            <td>
+                <a asp-controller="Randevu" asp-action="EkleGuncelle" asp-route-id="@randevu.Id" type="button" class="btn btn-outline-success" style="width:125px">Guncelle</a>
+            </td>
+            <td>
+                <a asp-controller="Randevu" asp-action="Sil" asp-route-id="@randevu.Id" type="button" class="btn btn-outline-danger" style="width:125px">Sil</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+        
+</table>
+</div>
+
+<div class="row pt-3 pb-2">
+    <div>
+        <a asp-controller="Randevu" asp-action="EkleGuncelle" class="btn btn-lg btn-primary" type="button">
+            Yeni Randevu Al
+        </a>
+    </div>
+</div>

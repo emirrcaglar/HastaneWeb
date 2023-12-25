@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HastaneRandevu.Models
@@ -16,7 +17,9 @@ namespace HastaneRandevu.Models
         [MaxLength(30)]
         public string soyad { get; set; }
 
+        [ValidateNever]
         public int BolumId { get; set; }
+        [ValidateNever]
         [ForeignKey("BolumId")]
         public Bolum? Bolum { get; set;}
 
