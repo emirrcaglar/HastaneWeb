@@ -75,6 +75,13 @@ namespace HastaneRandevu.Controllers
 
         public IActionResult Sil(int? id)
         {
+            IEnumerable<SelectListItem> DoktorList = _doktorRepository.GetAll().Select(k => new SelectListItem
+            {
+                Text = $"{k.ad} {k.soyad}",
+                Value = k.Id.ToString()
+            });
+            ViewBag.Doktor = DoktorList;
+
             if (id == null || id == 0)
             {
                 return NotFound();

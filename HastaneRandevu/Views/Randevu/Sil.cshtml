@@ -9,8 +9,12 @@
         </div>
         <div class="mb-3">
             <label asp-for="HastaId" class="p-0">Doktorun Adi: </label>
-            <input asp-for="HastaId" class="form-control" />
+            <input asp-for="HastaId" disabled class="form-control" />
         </div>      
+        <div class="mb-3">
+            <label asp-for="DoktorId" class="p-0">Doktor</label>
+            <select asp-for="DoktorId" asp-items="ViewBag.Doktor" disabled class="form-select"></select>
+        </div>
         <button type="submit" class="btn btn-lg btn-secondary" style="width:200px">Randevu Iptal</button>
 
         <a asp-controller="Randevu" asp-action="Index" class="btn btn-lg btn-info" style="width:200px">Geri Don</a>
