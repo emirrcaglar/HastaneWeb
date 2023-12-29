@@ -1,10 +1,11 @@
 ﻿using HastaneRandevu.Controllers;
 using HastaneRandevu.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HastaneRandevu.Utility
 {
-    public class UygulamaDbContext : DbContext
+    public class UygulamaDbContext : IdentityDbContext
     {
 
         public UygulamaDbContext(DbContextOptions<UygulamaDbContext> options) : base(options) { }
