@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HastaneRandevu.Controllers
 {
-
+    //doktor kontroller
     public class DoktorController : Controller
     {
         private readonly IDoktorRepository _doktorRepository;
