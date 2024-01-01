@@ -12,8 +12,7 @@ namespace HastaneRandevu.Utility
         public DbSet<Doktor> Doktorlar { get; set; }
         public DbSet<Bolum> Bolumler { get; set; }
         public DbSet<Randevu> Randevular { get; set; }
-
-        
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }
