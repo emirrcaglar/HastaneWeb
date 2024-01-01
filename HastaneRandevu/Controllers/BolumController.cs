@@ -38,6 +38,7 @@ namespace HastaneRandevu.Controllers
             return View();
         }
 
+        //userroles
         [Authorize(Roles = UserRoles.Role_Admin)]
         public IActionResult Guncelle(int? id)
         {
