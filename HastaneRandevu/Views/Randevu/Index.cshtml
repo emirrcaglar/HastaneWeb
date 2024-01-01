@@ -2,12 +2,12 @@
 
 @if (TempData["basarili"] != null){
     <div class="row pt-3 pb-2">
-    <h2 style="font-family:'Calibri'" >@TempData["basarili"]</h2>
+    <h2 style="font-family:'sans-serif'" >@TempData["basarili"]</h2>
     </div>
 }
 else{
     <div class="row pt-3 pb-2">
-    <h2 style="font-family:'Calibri'" >Randevular</h2>
+    <h2 style="font-family:'sans-serif'" >Randevular</h2>
     </div>
 }
 
@@ -16,11 +16,9 @@ else{
 <table class="table table-bordered">
     <thead>
     <tr>
+        
         <th>
-            Id
-        </th>
-        <th>
-            Hasta Adi
+            Hasta No
         </th>
         <th>
             Doktor
@@ -33,7 +31,6 @@ else{
         @foreach(var randevu in Model)
         { 
         <tr>
-            <td>@randevu.Id</td>
             <td>@randevu.HastaId</td>
             <td>@randevu.Doktor.ad @randevu.Doktor.soyad</td>
             

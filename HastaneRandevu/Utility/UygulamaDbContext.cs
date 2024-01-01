@@ -7,7 +7,6 @@ namespace HastaneRandevu.Utility
 {
     public class UygulamaDbContext : IdentityDbContext
     {
-
         public UygulamaDbContext(DbContextOptions<UygulamaDbContext> options) : base(options) { }
         public DbSet<Doktor> Doktorlar { get; set; }
         public DbSet<Bolum> Bolumler { get; set; }
