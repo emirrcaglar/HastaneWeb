@@ -1,9 +1,11 @@
 ﻿using HastaneRandevu.Models;
 using HastaneRandevu.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneRandevu.Controllers
 {
+    [Authorize(Roles = UserRoles.Role_Admin)]
     public class BolumController : Controller
     {
         private readonly IBolumRepository _bolumRepository;

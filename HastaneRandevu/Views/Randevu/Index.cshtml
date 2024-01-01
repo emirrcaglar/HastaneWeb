@@ -20,12 +20,12 @@ else{
             Id
         </th>
         <th>
-            HastaId
+            Hasta Id
         </th>
         <th>
-            Doktor Adi
+            Doktor
         </th>    
-        
+               
     </tr>
     </thead>
 
@@ -35,9 +35,11 @@ else{
         <tr>
             <td>@randevu.Id</td>
             <td>@randevu.HastaId</td>
-            <td>@randevu.Doktor.ad</td>            
+            <td>@randevu.Doktor.ad @randevu.Doktor.soyad</td>
+            
 
-            <td>
+
+                    <td>
                 <a asp-controller="Randevu" asp-action="EkleGuncelle" asp-route-id="@randevu.Id" type="button" class="btn btn-outline-success" style="width:125px">Guncelle</a>
             </td>
             <td>

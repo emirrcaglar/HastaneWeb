@@ -2,9 +2,12 @@
 using HastaneRandevu.Models;
 using HastaneRandevu.Utility;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HastaneRandevu.Controllers
 {
+    
+
     public class RandevuController : Controller
     {
         private readonly IDoktorRepository _doktorRepository;
