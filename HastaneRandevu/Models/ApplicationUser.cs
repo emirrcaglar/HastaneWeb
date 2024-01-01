@@ -5,6 +5,7 @@ namespace HastaneRandevu.Models
 {
     public class ApplicationUser : IdentityUser
     {
+
         [Required]
         public string HastaAdi { get; set; }
         [Required]
