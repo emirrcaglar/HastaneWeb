@@ -1,11 +1,11 @@
 ﻿@model Doktor
+@using HastaneRandevu.Utility
 
 <form method="post">
 
     <div class="border p-3 mt-5">
         <div class="row pb-3">
             <h2 class="text-primary">@(Model == null? "Doktor Ekle" : "Doktor Guncelle")</h2>
-            </hr>
         </div>
         <div class="mb-3">
             <label asp-for="ad" class="p-0">Doktorun Adi: </label>
@@ -29,9 +29,8 @@
             <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Doktor Guncelle</button>
         }
         else
-        {
-            <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Doktor Ekle</button>
-
+        {    
+            <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Doktor Ekle</button>           
         }
 
 

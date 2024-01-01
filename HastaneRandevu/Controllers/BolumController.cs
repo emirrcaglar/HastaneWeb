@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneRandevu.Controllers
 {
-    [Authorize(Roles = UserRoles.Role_Admin)]
     public class BolumController : Controller
     {
         private readonly IBolumRepository _bolumRepository;
@@ -19,10 +18,13 @@ namespace HastaneRandevu.Controllers
             return View(objBolumList);
         }
 
+        [Authorize(Roles = UserRoles.Role_Admin)]
         public IActionResult Ekle()
         {
             return View();
         }
+
+        [Authorize(Roles = UserRoles.Role_Admin)]
         [HttpPost]
         public IActionResult Ekle(Bolum bl)
         {
@@ -36,6 +38,7 @@ namespace HastaneRandevu.Controllers
             return View();
         }
 
+        [Authorize(Roles = UserRoles.Role_Admin)]
         public IActionResult Guncelle(int? id)
         {
             if(id== null || id==0)
@@ -49,6 +52,8 @@ namespace HastaneRandevu.Controllers
             }
             return View(bolumVt);
         }
+
+        [Authorize(Roles = UserRoles.Role_Admin)]
         [HttpPost]
         public IActionResult Guncelle(Bolum bl)
         {
@@ -62,6 +67,7 @@ namespace HastaneRandevu.Controllers
             return View();
         }
 
+        [Authorize(Roles = UserRoles.Role_Admin)]
         public IActionResult Sil(int? id)
         {
             if (id == null || id == 0)
@@ -75,6 +81,8 @@ namespace HastaneRandevu.Controllers
             }
             return View(bolumVt);
         }
+
+        [Authorize(Roles = UserRoles.Role_Admin)]
         [HttpPost, ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {

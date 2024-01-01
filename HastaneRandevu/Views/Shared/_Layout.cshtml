@@ -21,25 +21,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">   
                         
-                        @if (User.IsInRole(UserRoles.Role_Admin))
-                        {
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Bolum" asp-action="" style="font-family:
-">Bolumler</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Bolum" asp-action="" style="font-family:">Bolumler</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Doktor" asp-action="" style="font-family:sans-serif">Doktorlar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Randevu" asp-action="Index" style="font-family:'sans-serif'">Randevular</a>
-                            </li>
-                        }
-                        @if (User.IsInRole(UserRoles.Role_User))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Randevu" asp-action="Index" style="font-family:'sans-serif'">Randevular</a>
-                            </li>
-                        }
+                            </li>                           
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Randevu" asp-action="Index" style="font-family:'sans-serif'">Randevular</a>
+                        </li> 
                     </ul>
 
                     <partial name="_LoginPartial"/>

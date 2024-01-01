@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HastaneRandevu.Controllers
 {
-    [Authorize(Roles = UserRoles.Role_Admin)]
+
     public class DoktorController : Controller
     {
         private readonly IDoktorRepository _doktorRepository;
@@ -25,6 +25,8 @@ namespace HastaneRandevu.Controllers
             List<Doktor> objDoktorList = _doktorRepository.GetAll(includeProps:"Bolum").ToList();
             return View(objDoktorList);
         }
+
+        [Authorize(Roles = UserRoles.Role_Admin)]
 
         public IActionResult EkleGuncelle(int? id)
         {
@@ -52,6 +54,8 @@ namespace HastaneRandevu.Controllers
                 return View(doktorVt);
             }
         }
+
+        [Authorize(Roles = UserRoles.Role_Admin)]
         [HttpPost]
         public IActionResult EkleGuncelle(Doktor dt)
         {
@@ -76,6 +80,7 @@ namespace HastaneRandevu.Controllers
             return View();
         }
 
+        [Authorize(Roles = UserRoles.Role_Admin)]
         public IActionResult Sil(int? id)
         {
             if (id == null || id == 0)
@@ -89,6 +94,7 @@ namespace HastaneRandevu.Controllers
             }
             return View(doktorVt);
         }
+        [Authorize(Roles = UserRoles.Role_Admin)]
         [HttpPost, ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {
