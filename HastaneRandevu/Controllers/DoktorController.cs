@@ -21,7 +21,7 @@ namespace HastaneRandevu.Controllers
         }
         public IActionResult Index()
         {
-            // List<Doktor> objDoktorList = _doktorRepository.GetAll().ToList();
+            // List<Doktor> objDoktorList = _doktorRepository.GetAll().ToList()
             List<Doktor> objDoktorList = _doktorRepository.GetAll(includeProps:"Bolum").ToList();
             return View(objDoktorList);
         }
