@@ -1,0 +1,12 @@
+﻿@model HastaneRandevu.ViewModels.LoginViewModel
+
+<form method="post" action="@Url.Action("Login", "Account")">
+    <!-- Giriş formu içeriği -->
+    <label for="username">Kullanıcı Adı:</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Şifre:</label>
+    <input type="password" id="password" name="password" required />
+
+    <button type="submit">Giriş Yap</button>
+</form>

@@ -1,5 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.Title = "Admin Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Eğer bir layout kullanacaksanız, bu satırı ekleyin
 }
+
+<h2>Admin Sayfası</h2>
+
+<div>
+    <h3>Hoş geldiniz, Admin!</h3>
+    <p>Bu sayfa, admin kullanıcıları için özel bir alandır.</p>
+</div>
+
+<div>
+    <h4>Admin İşlemleri</h4>
+    <ul>
+        <li>@Html.ActionLink("Kullanıcıları Listele", "ListUsers")</li>
+        <!-- Diğer admin işlemleri için benzer linkler ekleyebilirsiniz -->
+    </ul>
+</div>
+
+<div>
+    <h4>Diğer İşlemler</h4>
+    <ul>
+        <li>@Html.ActionLink("Ana Sayfa", "Index", "Home")</li>
+        <!-- Diğer sayfalara yönlendiren linkler ekleyebilirsiniz -->
+    </ul>
+</div>
+
+<!-- İlgili stil ve görsel bileşenleri ekleyebilirsiniz -->
+<style>
+    /* Özel stil tanımlamaları buraya gelebilir */
+    body {
+        background-color: #f4f4f4;
+    }
+
+    .admin-section {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px 0;
+    }
+</style>
