@@ -7,7 +7,7 @@ namespace HastaneRandevu.Controllers
     
     public class AdminController : Controller
     {
-        // GET: HomeController1
+        // GET: HomeController
         public ActionResult Index()
         {
             return View();
