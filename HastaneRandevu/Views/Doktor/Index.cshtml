@@ -3,38 +3,32 @@
 
 @if (TempData["basarili"] != null){
     <div class="row pt-3 pb-2">
-    <h2 style="font-family:'sans-serif'" >@TempData["basarili"]</h2>
+    <h2>@TempData["basarili"]</h2>
     </div>
 }
 else{
     <div class="row pt-3 pb-2">
-    <h2 style="font-family:'sans-serif'" >Doktorlar</h2>
+    <h2>Doktorlar</h2>
     </div>
 }
 
 
-<div class="row pt-3 pb-2">
-<table class="table table-bordered">
+<div class="row pt-3 pb-2" style="margin-left: 2px;">
+    <table class="table table-light">
     <thead>
-    <tr>
-        <th>
+    <tr class="table-light">
+        <th scope="col">
             Bolum
         </th>
-        <th>
+        <th scope="col">
             Doktor Adi
         </th>
         
-        
-        
-        
     </tr>
     </thead>
-
     <tbody>
         @foreach(var doktor in Model)
         {
-            
-        
         <tr>
             <td> @doktor.Bolum.bolumAdi</td>
             <td> @doktor.ad @doktor.soyad </td>
@@ -44,8 +38,6 @@ else{
                 <a asp-controller="Doktor" asp-action="EkleGuncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-outline-success" style="width:125px">Guncelle</a>
                 </td>
             }
-            
-            
             @if (User.IsInRole(UserRoles.Role_Admin))
             {
                 <td>
