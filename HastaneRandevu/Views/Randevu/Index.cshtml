@@ -1,4 +1,6 @@
 ﻿@model List<Randevu>
+@using HastaneRandevu.Utility
+
 
 @if (TempData["basarili"] != null){
     <div class="row pt-3 pb-2">
@@ -21,10 +23,22 @@ else{
             Hasta No
         </th>
         <th scope="col">
+            Hasta Adi
+        </th>
+        <th scope="col">
+            Hasta Soyadi
+        </th>
+        <th scope="col">
             Doktor
-        </th>    
-               
-    </tr>
+        </th>
+        <th scope="col">
+            
+        
+        <th scope="col">
+            
+        </th>  
+
+            </tr>
     </thead>
 
     <tbody>
@@ -32,14 +46,18 @@ else{
         { 
         <tr>
             <td>@randevu.HastaId</td>
+            <td>@randevu.HastaAdi</td>
+            <td>@randevu.HastaSoyadi</td>
             <td>@randevu.Doktor.ad @randevu.Doktor.soyad</td>
-            
-            <td>
-                <a asp-controller="Randevu" asp-action="EkleGuncelle" asp-route-id="@randevu.Id" type="button" class="btn btn-outline-success" style="width:125px">Guncelle</a>
-            </td>
-            <td>
-                <a asp-controller="Randevu" asp-action="Sil" asp-route-id="@randevu.Id" type="button" class="btn btn-outline-danger" style="width:125px">Sil</a>
-            </td>
+            @if (User.IsInRole(UserRoles.Role_User))
+                {
+                <td>
+                    <a asp-controller="Randevu" asp-action="EkleGuncelle" asp-route-id="@randevu.Id" type="button" class="btn btn-outline-success" style="width:125px">Guncelle</a>
+                </td>
+                <td>
+                    <a asp-controller="Randevu" asp-action="Sil" asp-route-id="@randevu.Id" type="button" class="btn btn-outline-danger" style="width:125px">Sil</a>
+                </td>
+                }
         </tr>
         }
     </tbody>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HastaneRandevu.Models
 {
@@ -6,7 +7,12 @@ namespace HastaneRandevu.Models
     {
         public int Id { get; set; }
 
+
         public int HastaId {  get; set; }
+        [ForeignKey("HastaAdi")]
+        public string HastaAdi {  get; set; }
+        [ForeignKey("HastaSoyadi")]
+        public string HastaSoyadi {  get; set; }
 
         public int DoktorId { get; set; }
         [ForeignKey("DoktorId")]

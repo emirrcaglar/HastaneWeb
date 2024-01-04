@@ -14,6 +14,16 @@
             <span asp-validation-for="HastaId" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label asp-for="HastaAdi" class="p-0">Hasta Adi: </label>
+            <input asp-for="HastaAdi" class="form-control" />
+            <span asp-validation-for="HastaAdi" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="HastaSoyadi" class="p-0">Hasta Soyadi: </label>
+            <input asp-for="HastaSoyadi" class="form-control" />
+            <span asp-validation-for="HastaSoyadi" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
             <label asp-for="DoktorId" class="p-0">Doktor</label>
             <select asp-for="DoktorId" asp-items="ViewBag.Doktor" class="form-select"></select>
         </div>
