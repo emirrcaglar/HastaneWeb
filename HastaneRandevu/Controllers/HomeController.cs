@@ -1,5 +1,6 @@
 using HastaneRandevu.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using System.Diagnostics;
 
 namespace HastaneRandevu.Controllers
@@ -7,14 +8,17 @@ namespace HastaneRandevu.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IStringLocalizer<HomeController> _stringLocalizer;
+        public HomeController(ILogger<HomeController> logger,
+             IStringLocalizer<HomeController> localizer)
         {
             _logger = logger;
+            _stringLocalizer = localizer;
         }
 
         public IActionResult Index()
         {
+            var localizedTitle = _stringLocalizer["Welcome"];
             return View();
         }
 
